@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include <unistd.h>
+ #include <stdio.h>
+ #include <unistd.h>
 
-int main()
-{
-printf("Program nowy2");
-sleep(30);
-printf("Koncze\n");
-return 7;
-}  
+ int main()
+ {
+ printf("Program nowy2\n");
+ sleep(30);
+ printf("Koncze program 2\n");
+ return 5;
+ }
