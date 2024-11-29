@@ -1,0 +1,8 @@
+# ninja log v6
+1	48	1732877451433356526	CMakeFiles/Krasnal.dir/nowy2.c.o	b3d2b99a903beae3
+0	50	1732877451433356526	CMakeFiles/Krasnal.dir/fkexe.c.o	219ae89ee424ec6d
+1	49	1732877451433356526	CMakeFiles/Krasnal.dir/nowy1.c.o	e3c51039f50ea8af
+1	25	1732877583141162210	build.ninja	1a528f9f1046bf3d
+2	43	1732877588760073777	CMakeFiles/Krasnal.dir/nowy1.c.o	e4012e0d79d9519d
+2	46	1732877588760073777	CMakeFiles/Krasnal.dir/nowy2.c.o	3f15aa68db158b00
+1	56	1732877588760073777	CMakeFiles/Krasnal.dir/fkexe.c.o	29fff0aa109a57e0
