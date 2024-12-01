@@ -7,6 +7,8 @@
 int main() {
     pid_t pid1;
     pid_t pid2;
+    pid_t npid;
+    int status;
 
     printf("Uruchomiono program fkexe, który podmieni swój kod na kod programu nowy1 i nowy2\n");
 
@@ -25,13 +27,12 @@ int main() {
         exit(1);
     }
 
-    wait(7);
-    printf ("Proces potomny o PID = %d, zakończony\n", pid1);
+    while ((npid = wait(&status)) != -1) {
+        printf("Proces o pid = %d zakończony\n", npid);
+        printf("Kod zakończenia %d\n", status/100);
+        printf("Numer sygnału %d\n", status%100);
+    }
 
-    wait(5);
-    printf ("Proces potomny o PID = %d, zakończony\n", pid2);
-    printf("Kończę program macierzysty\n");
-
-
+    printf("Koniec programu fkexe\n");
     return 0;
 }
