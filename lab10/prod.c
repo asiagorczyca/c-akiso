@@ -64,7 +64,7 @@ int main(){
     /* id zbioru semaforów*/
     int semid;
 
-    int current = 0;
+    int current = 1;
 
     semid = Create(1);
     /* taka bedzie struktura danych segmentu */
@@ -72,7 +72,6 @@ int main(){
 
     struct Data { /* taka będzie struktura danych segmentu */
         int num; // id of a set of data
-        int allow;
         char data[32];
     }*dane_ptr;
 
@@ -107,7 +106,6 @@ int main(){
       strncpy(dane_ptr->data,new_data, sizeof(new_data)-1);
       dane_ptr->num = current;
       current +=1;
-      dane_ptr->allow = 1;
       V(semid,0);
       }
 

@@ -83,7 +83,6 @@ int main(){
 
     struct Data { /* taka będzie struktura danych segmentu */
         int num; // id of a set of data
-        int allow;
         char data[32];
     }*dane_ptr;
 
@@ -115,7 +114,7 @@ int main(){
 
     while(!quit){
         P(semid,0);
-        printf("\n%s",dane_ptr->data);
+        printf("\nPakiet danych nr %d %s",dane_ptr->num,dane_ptr->data);
         printf("\nZatwierdzić dane? (t/n)\n");
 
         while ((conf = getchar()) != EOF) {
