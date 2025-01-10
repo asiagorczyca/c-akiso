@@ -98,8 +98,8 @@ int main(){
         return 2;
     }
 
-    for(int i=0; i<5; i++){
-      char new_data[32];
+    char new_data[32];
+    while (1){
       P(semid,0);
       printf("\nPodaj dane, ktore zostana przeslane do konsumenta: ");
       fgets(new_data, sizeof(new_data), stdin);

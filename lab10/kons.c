@@ -8,8 +8,15 @@
 #include <sys/sem.h>
 #include <errno.h>
 #include <string.h>
+#include <signal.h>
 
 int errno;
+int quit = 0;
+
+void handle_sigint(int sig) {
+    printf("\nPrzechwycono SIGINT (sygnał %d). Zamykam program.\n", sig);
+    quit = 1;
+}
 
 union semun {
     int val;
@@ -59,6 +66,7 @@ int Create(int no_elements)
 }
 
 int main(){
+    signal(SIGINT, handle_sigint);
 
     /* id segmentu pamieci dzielonej*/
     int shmID;
@@ -105,7 +113,7 @@ int main(){
 
     file = fopen("data.txt", "w");
 
-    for(int i=0; i<5; i++){
+    while(!quit){
         P(semid,0);
         printf("\n%s",dane_ptr->data);
         printf("\nZatwierdzić dane? (t/n)\n");
