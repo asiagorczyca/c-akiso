@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
+#include <stdlib.h>
 
 void handle_signal(int sig) {
     if (sig == SIGINT) {
         printf("Odebrano sygnal SIGINT - nowy1\n");
-        _exit(2);
+        exit(1);
     } else if (sig == SIGTERM) {
         printf("Odebrano sygnal SIGTERM - nowy1\n");
-        _exit(15);
+        exit(2);
     }
 }
 
