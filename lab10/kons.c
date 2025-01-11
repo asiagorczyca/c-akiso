@@ -73,10 +73,6 @@ int main(){
     /* id zbioru semaforów*/
     int semid;
 
-    int current = 0;
-
-    FILE *file;
-
     semid = Create(1);
     /* taka bedzie struktura danych segmentu */
 
@@ -110,25 +106,19 @@ int main(){
 
     char conf = 'n';
 
-    file = fopen("data.txt", "w");
-
     while(!quit){
         P(semid,0);
-        printf("\nPakiet danych nr %d %s",dane_ptr->num,dane_ptr->data);
-        printf("\nZatwierdzić dane? (t/n)\n");
+        printf("\nProdukt: %s Cena: %d",dane_ptr->data, dane_ptr->num);
+        printf("\nWcisnij t, aby pozowlic na przeslanie kolejnych danych ");
 
         while ((conf = getchar()) != EOF) {
-            if (conf == 't' || conf == 'n') {
+            if (conf == 't') {
                 break;
             }
         }
-        if(conf == 't'){
-            fprintf(file, "\n%s", dane_ptr->data);
-        }
+
         V(semid,0);
     }
-
-    fclose(file);
 
     // Detach and clean up shared memory
     if (shmdt(dane_ptr) == -1) {

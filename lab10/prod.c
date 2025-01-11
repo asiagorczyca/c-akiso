@@ -64,8 +64,6 @@ int main(){
     /* id zbioru semaforów*/
     int semid;
 
-    int current = 1;
-
     semid = Create(1);
     /* taka bedzie struktura danych segmentu */
 
@@ -97,15 +95,21 @@ int main(){
         return 2;
     }
 
-    char new_data[32];
+    char new_prod[32];
+    int price;
     while (1){
       P(semid,0);
+      char input[32];
       printf("\nPodaj dane, ktore zostana przeslane do konsumenta: ");
-      fgets(new_data, sizeof(new_data), stdin);
-      new_data[strcspn(new_data, "\n")] = 0;
-      strncpy(dane_ptr->data,new_data, sizeof(new_data)-1);
-      dane_ptr->num = current;
-      current +=1;
+      printf("\nPodaj nazwe produktu: ");
+      fgets(new_prod, sizeof(new_prod), stdin);
+      printf("\nPodaj cene produktu: ");
+      fgets(input,sizeof(input),stdin);
+      new_prod[strcspn(new_prod, "\n")] = 0;
+      price = atoi(input);
+      strncpy(dane_ptr->data,new_prod, sizeof(new_prod)-1);
+      dane_ptr->num = price;
+      price +=1;
       V(semid,0);
       }
 
