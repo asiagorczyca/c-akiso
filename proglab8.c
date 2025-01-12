@@ -7,8 +7,6 @@
 // cat /etc/passwd | sort
 
 int main(){
-    char tab[100];
-    int size;
     int descr[2];
 
     int fd = open("/etc/passwd", O_RDONLY);
