@@ -39,11 +39,15 @@ int main() {
 
     while ((npid = wait(&status)) != -1) {
         printf("Proces o pid = %d zakończony\n", npid);
-        printf("Kod zakończenia %d\n", (status >> 8) & 0xFF);
-        if(status >> 8 == 1){
+        int exit_code = (status >> 8) & 0xFF;
+        printf("Kod zakończenia %d\n", exit_code);
+        if(exit_code == 1){
             printf("Numer sygnału %d\n", 2);
-        } else if(status >> 8 == 2){
+        }
+        else if(exit_code == 2){
             printf("Numer sygnału %d\n", 15);
+        } else {
+            printf("Numer sygnału %d\n", status & 0xFF);
         }
     }
 
