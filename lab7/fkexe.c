@@ -14,7 +14,7 @@ int main() {
 
     pid1 = fork();
     if (pid1<0){
-      perror("Błąd pid 1");
+      perror("Błąd utworzenia pierwszego procesu potomnego");
       exit(1);
      }
 
@@ -27,7 +27,7 @@ int main() {
     pid2 = fork();
 
     if (pid2<0){
-        perror("Błąd pid 2");
+        perror("Błąd utworzenia drugiego procesu potomnego");
         exit(3);
     }
 
