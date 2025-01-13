@@ -24,13 +24,13 @@ int main(){
 
     // tworzy proces potomny i wykonuje się dla procesu potomnego
     if (fork() == 0) {
-        // zamknięcie deskryptora do wysyłania danych do potoku
+        // zamknięcie deskryptora do pisania do potoku
         close(descr[1]);
-        // zamienienie deskryptora standardowego wejścia na wejście danych do potoku
+        // zamienienie deskryptora standardowego wejścia na odczyt z potoku
         dup2(descr[0], 0);
-        // zamknięcie deskryptora do pobierania danych z potoku
+        // zamknięcie deskryptora do odczytu z potoku
         close(descr[0]);
-        // podmiana kodu procesu potomnego na kod programu sort
+        // podmiana kodu programu na kod programu sort
         execlp("sort", "sort", NULL);
         perror("Błąd podmiany kodu (sort)");
         exit(3);
